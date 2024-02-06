@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class ResponseUserDto {
-    private String id;
+    private String userId;
     private String fullName;
     private String email;
     private String avatarUrl;

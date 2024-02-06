@@ -14,5 +14,5 @@ import java.util.List;
 @Setter
 public class PaginateUsersResponseDto {
     private long count;
-    private List<ResponseUserDto> data;
+    private List<ResponseUserDto> dataList;
 }

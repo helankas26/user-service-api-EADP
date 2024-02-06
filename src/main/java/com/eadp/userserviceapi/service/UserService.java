@@ -5,13 +5,13 @@ import com.eadp.userserviceapi.dto.request.RequestUserDto;
 import com.eadp.userserviceapi.dto.response.ResponseUserDto;
 
 public interface UserService {
-    public PaginateUsersResponseDto findAllUsers(int page, int size, String searchText);
+    PaginateUsersResponseDto findAllUsers(int page, int size, String searchText);
 
-    public void createUser(RequestUserDto dto);
+    void createUser(RequestUserDto dto);
 
-    public ResponseUserDto findUser(String id);
+    ResponseUserDto findUser(String userId);
 
-    public void updateUser(String id, RequestUserDto dto);
+    void updateUser(String userId, RequestUserDto dto);
 
-    public void deleteUser(String userId);
+    void deleteUser(String userId);
 }

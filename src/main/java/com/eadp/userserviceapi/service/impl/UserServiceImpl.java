@@ -4,8 +4,9 @@ import com.eadp.userserviceapi.dto.paginate.PaginateUsersResponseDto;
 import com.eadp.userserviceapi.dto.request.RequestUserDto;
 import com.eadp.userserviceapi.dto.response.ResponseUserDto;
 import com.eadp.userserviceapi.service.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 @Transactional

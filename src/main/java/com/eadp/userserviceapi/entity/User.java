@@ -31,4 +31,10 @@ public class User {
 
     @Column(name = "status")
     private boolean status;
+
+    @OneToOne(mappedBy = "user")
+    private ShippingAddress shippingAddress;
+
+    @OneToOne(mappedBy = "user")
+    private BillingAddress billingAddress;
 }

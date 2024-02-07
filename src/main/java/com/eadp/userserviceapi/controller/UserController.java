@@ -1,6 +1,5 @@
 package com.eadp.userserviceapi.controller;
 
-import com.eadp.userserviceapi.dto.paginate.PaginateUsersResponseDto;
 import com.eadp.userserviceapi.dto.request.RequestUserDto;
 import com.eadp.userserviceapi.service.UserService;
 import com.eadp.userserviceapi.util.StandardResponse;

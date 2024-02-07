@@ -1,4 +1,4 @@
-package com.eadp.userserviceapi.dto.response;
+package com.eadp.userserviceapi.dto.request;
 
 import lombok.*;
 
@@ -7,10 +7,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class ResponseUserDto {
-    private String userId;
+public class UserRequestDto {
     private String fullName;
     private String email;
     private String avatarUrl;
+    private String password;
     private boolean status;
 }

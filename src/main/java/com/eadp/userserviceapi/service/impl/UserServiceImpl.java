@@ -1,8 +1,8 @@
 package com.eadp.userserviceapi.service.impl;
 
-import com.eadp.userserviceapi.dto.paginate.PaginateUsersResponseDto;
-import com.eadp.userserviceapi.dto.request.RequestUserDto;
-import com.eadp.userserviceapi.dto.response.ResponseUserDto;
+import com.eadp.userserviceapi.dto.paginate.UsersPaginateResponseDto;
+import com.eadp.userserviceapi.dto.request.UserRequestDto;
+import com.eadp.userserviceapi.dto.response.UserResponseDto;
 import com.eadp.userserviceapi.entity.User;
 import com.eadp.userserviceapi.repository.UserRepository;
 import com.eadp.userserviceapi.service.UserService;
@@ -32,15 +32,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PaginateUsersResponseDto findAllUsers(int page, int size, String searchText) {
+    public UsersPaginateResponseDto findAllUsers(int page, int size, String searchText) {
         searchText = "%" + searchText + "%";
 
         List<User> allUsers = userRepository.findAllUsers(searchText, PageRequest.of(page, size));
         Long count = userRepository.findAllUserCount(searchText);
 
-        List<ResponseUserDto> dtos = new ArrayList<>();
+        List<UserResponseDto> dtos = new ArrayList<>();
         allUsers.forEach(e -> {
-            dtos.add(new ResponseUserDto(
+            dtos.add(new UserResponseDto(
                     e.getUserId(),
                     e.getFullName(),
                     e.getEmail(),
@@ -48,11 +48,11 @@ public class UserServiceImpl implements UserService {
                     e.isStatus()
             ));
         });
-        return new PaginateUsersResponseDto(count, dtos);
+        return new UsersPaginateResponseDto(count, dtos);
     }
 
     @Override
-    public void createUser(RequestUserDto dto) {
+    public void createUser(UserRequestDto dto) {
         User user = new User();
 
         user.setUserId(keyManager.generateKey(new Random().nextInt(15)));
@@ -65,13 +65,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseUserDto findUser(String userId) {
+    public UserResponseDto findUser(String userId) {
         Optional<User> selectedUser = userRepository.findUserByUserId(userId);
 
         if (selectedUser.isEmpty()) throw new RuntimeException();
 
         // String avatar=new String(selectedUser.get().getAvatarUrl(), StandardCharsets.UTF_8);
-        return new ResponseUserDto(
+        return new UserResponseDto(
                 selectedUser.get().getUserId(),
                 selectedUser.get().getFullName(),
                 selectedUser.get().getEmail(),
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(String userId, RequestUserDto dto) {
+    public void updateUser(String userId, UserRequestDto dto) {
         Optional<User> selectedUser = userRepository.findUserByUserId(userId);
 
         if (selectedUser.isEmpty()) throw new RuntimeException();

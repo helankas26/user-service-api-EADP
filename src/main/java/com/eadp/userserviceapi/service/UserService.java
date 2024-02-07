@@ -1,17 +1,17 @@
 package com.eadp.userserviceapi.service;
 
-import com.eadp.userserviceapi.dto.paginate.PaginateUsersResponseDto;
-import com.eadp.userserviceapi.dto.request.RequestUserDto;
-import com.eadp.userserviceapi.dto.response.ResponseUserDto;
+import com.eadp.userserviceapi.dto.paginate.UsersPaginateResponseDto;
+import com.eadp.userserviceapi.dto.request.UserRequestDto;
+import com.eadp.userserviceapi.dto.response.UserResponseDto;
 
 public interface UserService {
-    PaginateUsersResponseDto findAllUsers(int page, int size, String searchText);
+    UsersPaginateResponseDto findAllUsers(int page, int size, String searchText);
 
-    void createUser(RequestUserDto dto);
+    void createUser(UserRequestDto dto);
 
-    ResponseUserDto findUser(String userId);
+    UserResponseDto findUser(String userId);
 
-    void updateUser(String userId, RequestUserDto dto);
+    void updateUser(String userId, UserRequestDto dto);
 
     void deleteUser(String userId);
 }

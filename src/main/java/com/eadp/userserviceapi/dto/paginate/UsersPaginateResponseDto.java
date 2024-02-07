@@ -1,6 +1,6 @@
 package com.eadp.userserviceapi.dto.paginate;
 
-import com.eadp.userserviceapi.dto.response.ResponseUserDto;
+import com.eadp.userserviceapi.dto.response.UserResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PaginateUsersResponseDto {
+public class UsersPaginateResponseDto {
     private long count;
-    private List<ResponseUserDto> dataList;
+    private List<UserResponseDto> dataList;
 }

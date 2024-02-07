@@ -1,6 +1,6 @@
 package com.eadp.userserviceapi.controller;
 
-import com.eadp.userserviceapi.dto.request.RequestUserDto;
+import com.eadp.userserviceapi.dto.request.UserRequestDto;
 import com.eadp.userserviceapi.service.UserService;
 import com.eadp.userserviceapi.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<StandardResponse> createUser(@RequestBody RequestUserDto dto) {
+    public ResponseEntity<StandardResponse> createUser(@RequestBody UserRequestDto dto) {
         userService.createUser(dto);
         return new ResponseEntity<>(
                 new StandardResponse(201, dto.getFullName() + " was Saved!", null),
@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<StandardResponse> updateUser(@PathVariable String userId, @RequestBody RequestUserDto dto) {
+    public ResponseEntity<StandardResponse> updateUser(@PathVariable String userId, @RequestBody UserRequestDto dto) {
         userService.updateUser(userId, dto);
         return new ResponseEntity<>(
                 new StandardResponse(201, dto.getFullName() + " was updated!", null),

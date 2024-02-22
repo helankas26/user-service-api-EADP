@@ -3,11 +3,11 @@ package com.eadp.userserviceapi.service;
 import com.eadp.userserviceapi.dto.common.ShippingAddressDto;
 
 public interface ShippingAddressService {
-    void saveAddress(String userId, ShippingAddressDto dto);
+    void saveAddress(int userId, ShippingAddressDto dto);
 
-    ShippingAddressDto findAddress(String userId);
+    ShippingAddressDto findAddress(int userId);
 
-    void updateAddress(String userId, ShippingAddressDto dto);
+    void updateAddress(int userId, ShippingAddressDto dto);
 
-    void deleteAddress(String userId);
+    void deleteAddress(int userId);
 }

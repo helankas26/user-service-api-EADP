@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDto findUser(String userId) {
+    public UserResponseDto findUser(int userId) {
         Optional<User> selectedUser = userRepository.findUserByUserId(userId);
 
         if (selectedUser.isEmpty()) throw new RuntimeException();
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(String userId, UserRequestDto dto) {
+    public void updateUser(int userId, UserRequestDto dto) {
         Optional<User> selectedUser = userRepository.findUserByUserId(userId);
 
         if (selectedUser.isEmpty()) throw new RuntimeException();
@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(String userId) {
+    public void deleteUser(int userId) {
         Optional<User> selectedUser = userRepository.findUserByUserId(userId);
 
         if (selectedUser.isEmpty()) throw new RuntimeException();

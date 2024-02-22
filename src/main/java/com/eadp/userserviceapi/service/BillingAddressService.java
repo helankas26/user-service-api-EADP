@@ -3,11 +3,11 @@ package com.eadp.userserviceapi.service;
 import com.eadp.userserviceapi.dto.common.BillingAddressDto;
 
 public interface BillingAddressService {
-    void saveAddress(String userId, BillingAddressDto dto);
+    void saveAddress(int userId, BillingAddressDto dto);
 
-    BillingAddressDto findAddress(String userId);
+    BillingAddressDto findAddress(int userId);
 
-    void updateAddress(String userId, BillingAddressDto dto);
+    void updateAddress(int userId, BillingAddressDto dto);
 
-    void deleteAddress(String userId);
+    void deleteAddress(int userId);
 }

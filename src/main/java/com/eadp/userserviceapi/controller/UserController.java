@@ -40,14 +40,14 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity<StandardResponse> findUser(@PathVariable String userId) {
         return new ResponseEntity<>(
-                new StandardResponse(200, "User data", userService.findUser(userId)),
+                new StandardResponse(200, "User data", userService.findUser(Integer.parseInt(userId))),
                 HttpStatus.OK
         );
     }
 
     @PutMapping("/{userId}")
     public ResponseEntity<StandardResponse> updateUser(@PathVariable String userId, @RequestBody UserRequestDto dto) {
-        userService.updateUser(userId, dto);
+        userService.updateUser(Integer.parseInt(userId), dto);
         return new ResponseEntity<>(
                 new StandardResponse(201, dto.getFullName() + " was updated!", null),
                 HttpStatus.CREATED
@@ -56,7 +56,7 @@ public class UserController {
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<StandardResponse> deleteUser(@PathVariable String userId) {
-        userService.deleteUser(userId);
+        userService.deleteUser(Integer.parseInt(userId));
         return new ResponseEntity<>(
                 new StandardResponse(204, userId + " was Deleted!", null),
                 HttpStatus.NO_CONTENT

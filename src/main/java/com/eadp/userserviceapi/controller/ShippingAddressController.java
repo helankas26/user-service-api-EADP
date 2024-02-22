@@ -20,7 +20,7 @@ public class ShippingAddressController {
 
     @PostMapping(params = "userId")
     public ResponseEntity<StandardResponse> createUser(@RequestParam String userId, @RequestBody ShippingAddressDto dto) {
-        shippingAddressService.saveAddress(userId, dto);
+        shippingAddressService.saveAddress(Integer.parseInt(userId), dto);
         return new ResponseEntity<>(
                 new StandardResponse(201, "Address was Saved!", null),
                 HttpStatus.CREATED
@@ -29,7 +29,7 @@ public class ShippingAddressController {
 
     @PutMapping(params = "userid")
     public ResponseEntity<StandardResponse> updateUser(@RequestParam String userId, @RequestBody ShippingAddressDto dto) {
-        shippingAddressService.updateAddress(userId, dto);
+        shippingAddressService.updateAddress(Integer.parseInt(userId), dto);
         return new ResponseEntity<>(
                 new StandardResponse(201, "Address was updated!", null),
                 HttpStatus.CREATED
@@ -39,14 +39,14 @@ public class ShippingAddressController {
     @GetMapping("/{userId}")
     public ResponseEntity<StandardResponse> findUser(@PathVariable String userId) {
         return new ResponseEntity<>(
-                new StandardResponse(200, "Address data", shippingAddressService.findAddress(userId)),
+                new StandardResponse(200, "Address data", shippingAddressService.findAddress(Integer.parseInt(userId))),
                 HttpStatus.OK
         );
     }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<StandardResponse> deleteUser(@PathVariable String userId) {
-        shippingAddressService.deleteAddress(userId);
+        shippingAddressService.deleteAddress(Integer.parseInt(userId));
         return new ResponseEntity<>(
                 new StandardResponse(204, "Address was Deleted!", null),
                 HttpStatus.NO_CONTENT
